@@ -2,7 +2,7 @@ name: Update One Apex Dashboard
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Daily at midnight UTC (8 AM Manila)
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC (10 AM Manila)
   workflow_dispatch:
   repository_dispatch:
 
