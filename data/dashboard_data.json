@@ -1,0 +1,195 @@
+{
+  "branch": {
+    "mtd": 1000425.7200000001,
+    "ytd": 9635780.79,
+    "active": 14
+  },
+  "teams": {
+    "AJ": {
+      "MAY_MTD": 89988.0,
+      "YTD": 1133288.0
+    },
+    "Dianne": {
+      "MAY_MTD": 52613.0,
+      "YTD": 535771.0
+    },
+    "Ivan": {
+      "MAY_MTD": 142673.0,
+      "YTD": 1256734.0
+    },
+    "JP": {
+      "MAY_MTD": 226552.0,
+      "YTD": 1337744.0
+    },
+    "Kirk": {
+      "MAY_MTD": 406269.0,
+      "YTD": 2882375.0
+    },
+    "PDC": {
+      "MAY_MTD": 0.0,
+      "YTD": 214169.0
+    },
+    "Renz": {
+      "MAY_MTD": 44999.0,
+      "YTD": 675602.0
+    },
+    "Sei": {
+      "MAY_MTD": 37332.0,
+      "YTD": 1600099.0
+    }
+  },
+  "top_mtd": [
+    {
+      "AGENT_NAME": "Camille Anne Buenaventura Pelayo",
+      "TEAM": "Kirk",
+      "MAY_MTD": 315456.0
+    },
+    {
+      "AGENT_NAME": "Kimberly Din Mitra",
+      "TEAM": "JP",
+      "MAY_MTD": 205888.08000000002
+    },
+    {
+      "AGENT_NAME": "Angely Allere Trinidad",
+      "TEAM": "Ivan",
+      "MAY_MTD": 142672.96000000002
+    },
+    {
+      "AGENT_NAME": "Reine Judelle Tumbaga Palcone",
+      "TEAM": "AJ",
+      "MAY_MTD": 89988.0
+    },
+    {
+      "AGENT_NAME": "John Sebastian Peneda Perez",
+      "TEAM": "Dianne",
+      "MAY_MTD": 42792.95999999999
+    },
+    {
+      "AGENT_NAME": "Shawntel Summer Fabila Lalisan",
+      "TEAM": "Renz",
+      "MAY_MTD": 33300.0
+    },
+    {
+      "AGENT_NAME": "Carlo Sierte Punzalan",
+      "TEAM": "Kirk",
+      "MAY_MTD": 31308.0
+    },
+    {
+      "AGENT_NAME": "Jaime Ente Jimenez",
+      "TEAM": "Kirk",
+      "MAY_MTD": 30480.0
+    },
+    {
+      "AGENT_NAME": "Jeremy Nikko Radaza Marco",
+      "TEAM": "Kirk",
+      "MAY_MTD": 29025.0
+    },
+    {
+      "AGENT_NAME": "Mark Nino Jarito Morales",
+      "TEAM": "JP",
+      "MAY_MTD": 20664.0
+    }
+  ],
+  "top_ytd": [
+    {
+      "AGENT_NAME": "Kimberly Din Mitra",
+      "TEAM": "JP",
+      "YTD": 1181799.3199999998
+    },
+    {
+      "AGENT_NAME": "Camille Anne Buenaventura Pelayo",
+      "TEAM": "Kirk",
+      "YTD": 598578.6
+    },
+    {
+      "AGENT_NAME": "Claudine Wowie Hao Chua",
+      "TEAM": "Sei",
+      "YTD": 573667.22
+    },
+    {
+      "AGENT_NAME": "Ivan Arnaiz Lontoc",
+      "TEAM": "Ivan",
+      "YTD": 563331.2399999999
+    },
+    {
+      "AGENT_NAME": "Danica Irish Pormatelo Sandagon",
+      "TEAM": "AJ",
+      "YTD": 479549.16
+    },
+    {
+      "AGENT_NAME": "Carlo Sierte Punzalan",
+      "TEAM": "Kirk",
+      "YTD": 467991.29
+    },
+    {
+      "AGENT_NAME": "Mikhail Joseph Rada Yu",
+      "TEAM": "Kirk",
+      "YTD": 434324.0
+    },
+    {
+      "AGENT_NAME": "Xiaresse Anne Catorce Andaya",
+      "TEAM": "Kirk",
+      "YTD": 298704.70999999996
+    },
+    {
+      "AGENT_NAME": "Reine Judelle Tumbaga Palcone",
+      "TEAM": "AJ",
+      "YTD": 285596.0
+    },
+    {
+      "AGENT_NAME": "John Kirk Montano Grospe",
+      "TEAM": "Kirk",
+      "YTD": 283836.0
+    },
+    {
+      "AGENT_NAME": "Jonathan Ente Jimenez",
+      "TEAM": "Kirk",
+      "YTD": 243016.4
+    },
+    {
+      "AGENT_NAME": "Aime Faeldan Ferrancullo",
+      "TEAM": "Renz",
+      "YTD": 239710.08000000002
+    },
+    {
+      "AGENT_NAME": "Jhesicu Mendana Beleno",
+      "TEAM": "Sei",
+      "YTD": 221937.19999999998
+    },
+    {
+      "AGENT_NAME": "Jaime Ente Jimenez",
+      "TEAM": "Kirk",
+      "YTD": 211825.31999999998
+    },
+    {
+      "AGENT_NAME": "Lilibeth Almarez Perez",
+      "TEAM": "Sei",
+      "YTD": 211778.78
+    },
+    {
+      "AGENT_NAME": "Jeanille Trixia Go Leyva",
+      "TEAM": "Sei",
+      "YTD": 203250.0
+    },
+    {
+      "AGENT_NAME": "Margarette Faith Mapalo Cayao",
+      "TEAM": "Kirk",
+      "YTD": 197817.96000000002
+    },
+    {
+      "AGENT_NAME": "Diana Rose Salazar Balingit",
+      "TEAM": "Dianne",
+      "YTD": 174300.0
+    },
+    {
+      "AGENT_NAME": "Sherwin Banag Ico",
+      "TEAM": "Sei",
+      "YTD": 174296.61
+    },
+    {
+      "AGENT_NAME": "Jona Val Tiaga Casidsid",
+      "TEAM": "Renz",
+      "YTD": 169925.12000000002
+    }
+  ]
+}
