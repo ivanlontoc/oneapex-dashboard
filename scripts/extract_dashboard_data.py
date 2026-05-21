@@ -1,81 +1,116 @@
-import pandas as pd
 import json
-import os
-import msoffcrypto
-import io
+from datetime import datetime
 
-# Load DPR file
-dpr_path = 'data/latest_dpr.xlsx'
-password = os.environ['DPR_PASSWORD']
+# Load dashboard data
+with open('data/dashboard_data.json', 'r') as f:
+    data = json.load(f)
 
-# Decrypt if needed
-with open(dpr_path, 'rb') as f:
-    office_file = msoffcrypto.OfficeFile(f)
-    office_file.load_key(password=password)
-    decrypted = io.BytesIO()
-    office_file.decrypt(decrypted)
-    decrypted.seek(0)
-    df = pd.read_excel(decrypted, sheet_name='Production per Agent', header=None, skiprows=5)
+# Load dashboard template
+with open('dashboard_template.html', 'r', encoding='utf-8') as f:
+    template = f.read()
 
-print("✅ DPR file loaded and decrypted")
+# Replace branch totals
+template = template.replace('{{BRANCH_MTD}}', f"₱{data['branch_mtd']:,.2f}")
+template = template.replace('{{BRANCH_YTD}}', f"₱{data['branch_ytd']:,.2f}")
+template = template.replace('{{BRANCH_ACTIVE}}', str(data['branch_active']))
+template = template.replace('{{BRANCH_MANPOWER}}', str(data['branch_manpower']))
+template = template.replace('{{BRANCH_ACTIVITY_RATIO}}', f"{data['branch_activity_ratio']:.1f}%")
 
-# Column mapping (v11)
-df['AGENT_ID'] = df[1].astype(str).str.strip()
-df['AGENT_NAME'] = df[2]
-df['STATUS'] = df[4]
-df['MAY_MTD'] = pd.to_numeric(df[13], errors='coerce').fillna(0)
-df['MAY_CC'] = pd.to_numeric(df[14], errors='coerce').fillna(0)
-df['YTD'] = pd.to_numeric(df[17], errors='coerce').fillna(0)
-df['YTD_CC'] = pd.to_numeric(df[18], errors='coerce').fillna(0)
-df['FWM'] = df[28]
+# Replace branch targets (NEW - dynamic targets)
+template = template.replace('{{BRANCH_MONTHLY_TARGET}}', f"₱{data['branch_monthly_target']:,}")
+template = template.replace('{{BRANCH_YTD_TARGET}}', f"₱{data['branch_ytd_target']:,}")
+template = template.replace('{{CURRENT_MONTH}}', data['current_month'])
 
-# Filter active agents
-df_agents = df[df['AGENT_ID'].str.match(r'^\d{8}$', na=False)].copy()
-df_active = df_agents[df_agents['STATUS'] == 'ACTIVE'].copy()
+# Replace team placeholders
+for team, values in data['teams'].items():
+    team_upper = team.upper()
+    template = template.replace(f'{{{{{team_upper}_MTD}}}}', f"₱{values['mtd']:,.2f}")
+    template = template.replace(f'{{{{{team_upper}_YTD}}}}', f"₱{values['ytd']:,.2f}")
+    template = template.replace(f'{{{{{team_upper}_ACTIVE}}}}', str(values['active']))
+    template = template.replace(f'{{{{{team_upper}_MANPOWER}}}}', str(values['manpower']))
+    template = template.replace(f'{{{{{team_upper}_ACTIVITY}}}}', f"{values['activity_ratio']:.1f}%")
+    
+    # Replace team targets (NEW - dynamic targets)
+    template = template.replace(f'{{{{{team_upper}_MONTHLY_TARGET}}}}', f"₱{values['monthly_target']:,}")
+    template = template.replace(f'{{{{{team_upper}_YTD_TARGET}}}}', f"₱{values['ytd_target']:,}")
 
-# FWM to Team mapping
-fwm_to_team = {
-    'John Kirk Montano Grospe': 'Kirk',
-    'John Paul Perido Mitra': 'JP',
-    ' FWM - Direct - Ivan Arnaiz Lontoc': 'Ivan',
-    'Alyssa Joyce Del Rosario Maningding': 'AJ',
-    'Dianne Mae Tortosion Pestanas': 'Dianne',
-    'Renelyn Desiree David Ramirez': 'Renz',
-    'J R Seimone Montano Grospe': 'Sei',
-    'Princess Diane De Guzman Cheng': 'PDC'
-}
+# Generate Top Performers HTML
+def generate_table_rows(performers, columns):
+    """Generate HTML table rows for top performers"""
+    rows = ""
+    for i, p in enumerate(performers, 1):
+        row = f"<tr><td>{i}</td>"
+        for col in columns:
+            if col in p:
+                if 'APE' in col:
+                    row += f"<td>₱{p[col]:,.2f}</td>"
+                elif 'CC' in col:
+                    row += f"<td>{p[col]:.1f}</td>"
+                elif col == 'Active_Recruits':
+                    row += f"<td>{int(p[col])}</td>"
+                else:
+                    row += f"<td>{p[col]}</td>"
+        row += "</tr>"
+        rows += row
+    return rows if rows else "<tr><td colspan='10' style='text-align:center;'>No data available</td></tr>"
 
-df_active['TEAM'] = df_active['FWM'].map(fwm_to_team)
+# Top 10 MTD
+top_10_mtd_rows = generate_table_rows(
+    data['top_performers']['top_10_mtd'],
+    ['Agent_Name', 'Team', 'MTD_APE', 'MTD_CC']
+)
+template = template.replace('{{TOP_10_MTD_ROWS}}', top_10_mtd_rows)
 
-# Calculate branch totals
-branch_mtd = df_active['MAY_MTD'].sum()
-branch_ytd = df_active['YTD'].sum()
-active_count = len(df_active[df_active['MAY_MTD'] > 0])
+# Top 20 YTD
+top_20_ytd_rows = generate_table_rows(
+    data['top_performers']['top_20_ytd'],
+    ['Agent_Name', 'Team', 'YTD_APE', 'YTD_CC']
+)
+template = template.replace('{{TOP_20_YTD_ROWS}}', top_20_ytd_rows)
 
-# Team totals
-team_data = df_active.groupby('TEAM').agg({
-    'MAY_MTD': 'sum',
-    'YTD': 'sum'
-}).round(0).to_dict('index')
+# Top 10 Rookies MTD
+top_10_rookies_mtd_rows = generate_table_rows(
+    data['top_performers']['top_10_rookies_mtd'],
+    ['Agent_Name', 'Team', 'MTD_APE', 'MTD_CC']
+)
+template = template.replace('{{TOP_10_ROOKIES_MTD_ROWS}}', top_10_rookies_mtd_rows)
 
-# Top producers
-top_mtd = df_active.nlargest(10, 'MAY_MTD')[['AGENT_NAME', 'TEAM', 'MAY_MTD']].to_dict('records')
-top_ytd = df_active.nlargest(20, 'YTD')[['AGENT_NAME', 'TEAM', 'YTD']].to_dict('records')
+# Top 20 Rookies YTD
+top_20_rookies_ytd_rows = generate_table_rows(
+    data['top_performers']['top_20_rookies_ytd'],
+    ['Agent_Name', 'Team', 'YTD_APE', 'YTD_CC']
+)
+template = template.replace('{{TOP_20_ROOKIES_YTD_ROWS}}', top_20_rookies_ytd_rows)
 
-# Save extracted data
-output_data = {
-    'branch': {
-        'mtd': float(branch_mtd),
-        'ytd': float(branch_ytd),
-        'active': int(active_count)
-    },
-    'teams': team_data,
-    'top_mtd': top_mtd,
-    'top_ytd': top_ytd
-}
+# Top Recruiters MTD
+top_recruiters_mtd_rows = generate_table_rows(
+    data['top_performers']['top_recruiters_mtd'],
+    ['Recruiter_Name', 'Team', 'Recruits_MTD_APE', 'Active_Recruits']
+)
+template = template.replace('{{TOP_RECRUITERS_MTD_ROWS}}', top_recruiters_mtd_rows)
 
-os.makedirs('data', exist_ok=True)
-with open('data/dashboard_data.json', 'w') as f:
-    json.dump(output_data, f, indent=2)
+# Top Recruiters YTD
+top_recruiters_ytd_rows = generate_table_rows(
+    data['top_performers']['top_recruiters_ytd'],
+    ['Recruiter_Name', 'Team', 'Recruits_YTD_APE', 'Active_Recruits']
+)
+template = template.replace('{{TOP_RECRUITERS_YTD_ROWS}}', top_recruiters_ytd_rows)
 
-print("✅ Data extracted and saved to data/dashboard_data.json")
+# Update timestamp
+template = template.replace('{{UPDATE_DATE}}', data['update_timestamp'])
+
+# Save as index.html
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(template)
+
+print("Dashboard HTML updated successfully!")
+print(f"Current Month: {data['current_month']}")
+print(f"Branch metrics:")
+print(f"  - MTD: ₱{data['branch_mtd']:,.2f} / Target: ₱{data['branch_monthly_target']:,}")
+print(f"  - YTD: ₱{data['branch_ytd']:,.2f} / Target: ₱{data['branch_ytd_target']:,}")
+print(f"  - Active: {data['branch_active']}")
+print(f"  - Manpower: {data['branch_manpower']}")
+print(f"  - Activity: {data['branch_activity_ratio']:.1f}%")
+print(f"Top Performers sections generated:")
+print(f"  - Top 10 MTD: {len(data['top_performers']['top_10_mtd'])} producers")
+print(f"  - Top 20 YTD: {len(data['top_performers']['top_20_ytd'])} producers")
