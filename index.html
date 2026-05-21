@@ -12,2031 +12,956 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: #F8F9FA;
-            min-height: 100vh;
-            color: #1A1A1A;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
         }
 
-        /* Header Section */
-        .top-nav {
-            background: #FFFFFF;
-            padding: 2rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        /* Header Navigation */
+        .header {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .top-nav-content {
+        .header-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 2rem;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1A1A1A;
-            letter-spacing: -1px;
-        }
-
-        .nav-links {
             display: flex;
-            gap: 2rem;
-            font-size: 0.95rem;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #0A1F44;
         }
 
-        .nav-links a {
-            color: #1A1A1A;
+        .logo::before {
+            content: "▲";
+            color: #FF6600;
+            font-size: 24px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: #333;
             text-decoration: none;
             font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
+        .nav a:hover {
+            background: #f0f0f0;
+        }
+
+        .nav a.active {
+            background: #0A1F44;
+            color: white;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #FF6600 0%, #FF8C42 100%);
-            border-radius: 16px;
-            padding: 3rem;
-            color: #FFFFFF;
-            margin-bottom: 3rem;
-            box-shadow: 0 4px 20px rgba(255, 102, 0, 0.15);
+            background: linear-gradient(135deg, #FF6600 0%, #ff8533 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            font-size: 48px;
+            margin-bottom: 10px;
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 18px;
             opacity: 0.95;
         }
 
-        /* Filter Pills */
-        .filters {
+        /* Tab Navigation */
+        .tabs {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .tabs-content {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            border: 2px solid #E0E0E0;
-            background: #FFFFFF;
-            color: #1A1A1A;
-            border-radius: 50px;
+        .tab {
+            padding: 12px 24px;
+            border-radius: 25px;
+            background: white;
+            border: 2px solid #e0e0e0;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
+            transition: all 0.3s;
+            white-space: nowrap;
         }
 
-        .filter-btn:hover {
-            border-color: #FF6600;
-            color: #FF6600;
-        }
-
-        .filter-btn.active {
+        .tab.active {
             background: #FF6600;
-            color: #FFFFFF;
+            color: white;
             border-color: #FF6600;
         }
 
-        .dashboard-view {
-            display: none;
+        .tab:hover:not(.active) {
+            border-color: #FF6600;
         }
 
-        .dashboard-view.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
+        /* Branch Overview Section */
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 40px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* KPI Cards - FWD Style */
-        .kpi-grid {
+        .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        .kpi-card {
-            background: #FFFFFF;
+        .metric-card {
+            background: white;
             border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #F0F0F0;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .kpi-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        }
-
-        .kpi-label {
-            font-size: 0.875rem;
-            color: #666666;
-            margin-bottom: 0.75rem;
+        .metric-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        .kpi-value {
-            font-size: 2.25rem;
+        .metric-value {
+            font-size: 32px;
             font-weight: 700;
             color: #FF6600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 4px;
         }
 
-        .kpi-subtitle {
-            font-size: 0.95rem;
-            color: #999999;
+        .metric-subtitle {
+            font-size: 14px;
+            color: #999;
         }
 
-        .kpi-progress {
-            margin-top: 1rem;
-            height: 6px;
-            background: #F0F0F0;
-            border-radius: 3px;
+        .progress-bar {
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
             overflow: hidden;
+            margin-top: 12px;
         }
 
-        .kpi-progress-bar {
+        .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #FF6600, #FF8C42);
-            border-radius: 3px;
+            background: linear-gradient(90deg, #FF6600 0%, #ff8533 100%);
             transition: width 0.5s ease;
         }
 
-        /* Team Grid */
-        .section-header {
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: #1A1A1A;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-subtitle {
-            color: #666666;
-            font-size: 1rem;
-        }
-
-        .team-grid {
+        /* Team Cards */
+        .teams-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .team-card {
-            background: #FFFFFF;
+            background: white;
             border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #F0F0F0;
-        }
-
-        .team-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            border-color: #FF6600;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .team-header {
+            background: #0A1F44;
+            color: white;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #F8F9FA;
         }
 
         .team-name {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: 700;
-            color: #1A1A1A;
         }
 
         .team-badge {
-            padding: 0.5rem 1rem;
             background: #FF6600;
-            color: #FFFFFF;
+            color: white;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .team-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            padding: 24px;
         }
 
-        .stat-item {
-            padding: 1rem;
-            background: #F8F9FA;
-            border-radius: 8px;
+        .stat-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .stat {
+            text-align: left;
         }
 
         .stat-label {
-            font-size: 0.75rem;
-            color: #666666;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
         }
 
         .stat-value {
-            font-size: 1.25rem;
+            font-size: 20px;
             font-weight: 700;
-            color: #1A1A1A;
+            color: #0A1F44;
         }
 
-        /* Producers Table */
-        .producers-section {
-            margin-top: 2rem;
+        .stat-value.highlight {
+            color: #FF6600;
         }
 
-        .producers-header {
+        .team-progress {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .progress-label {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
-        .producers-title {
-            font-size: 1.5rem;
+        .progress-label strong {
+            color: #FF6600;
+        }
+
+        /* Top Performers Section */
+        .top-performers-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 36px;
             font-weight: 700;
-            color: #1A1A1A;
+            color: #0A1F44;
+            margin-bottom: 10px;
         }
 
-        .producer-count {
-            font-size: 0.875rem;
-            color: #666666;
-            background: #F8F9FA;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+        .section-subtitle {
+            font-size: 16px;
+            color: #666;
         }
 
-        .producers-table {
+        .top-performers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .performer-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .performer-card-header {
+            background: linear-gradient(135deg, #0A1F44 0%, #1a3a6e 100%);
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .performer-card-header.rookies {
+            background: linear-gradient(135deg, #C8A951 0%, #d4b869 100%);
+        }
+
+        .performer-card-header.recruiters {
+            background: linear-gradient(135deg, #2c5f2d 0%, #3d7a3e 100%);
+        }
+
+        .performer-table {
             width: 100%;
             border-collapse: collapse;
-            background: #FFFFFF;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
-        .producers-table thead {
-            background: #F8F9FA;
-        }
-
-        .producers-table th {
-            padding: 1rem;
+        .performer-table th {
+            background: #F4F6FB;
+            padding: 12px;
             text-align: left;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #666666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .producers-table td {
-            padding: 1rem;
-            border-top: 1px solid #F0F0F0;
-            font-size: 0.95rem;
-        }
-
-        .producers-table tbody tr:hover {
-            background: #F8F9FA;
-        }
-
-        .producer-name {
             font-weight: 600;
-            color: #1A1A1A;
+            font-size: 13px;
+            color: #0A1F44;
+            border-bottom: 2px solid #C8A951;
         }
 
-        .amount {
+        .performer-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .performer-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .performer-table tr:nth-child(1) td:first-child,
+        .performer-table tr:nth-child(2) td:first-child,
+        .performer-table tr:nth-child(3) td:first-child {
             font-weight: 700;
-            color: #FF6600;
+            color: #C8A951;
+            font-size: 16px;
         }
 
-        /* Team Detail View */
-        .team-detail {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 3rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        /* Footer */
+        .footer {
+            background: #0A1F44;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
         }
 
-        .back-btn {
-            padding: 0.75rem 1.5rem;
-            background: #FFFFFF;
-            border: 2px solid #E0E0E0;
-            color: #1A1A1A;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .footer p {
+            margin: 5px 0;
         }
 
-        .back-btn:hover {
-            border-color: #FF6600;
-            color: #FF6600;
+        .footer-small {
+            opacity: 0.7;
+            font-size: 14px;
         }
 
-        .detail-header {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid #F8F9FA;
-        }
-
-        .detail-team-name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1A1A1A;
-            margin-bottom: 0.5rem;
-        }
-
-        .detail-subtitle {
-            color: #666666;
-            font-size: 1.1rem;
-        }
-
-        /* Orange CTA Banner */
-        .cta-banner {
-            background: linear-gradient(135deg, #FF6600 0%, #FF8C42 100%);
-            border-radius: 12px;
-            padding: 2rem;
-            color: #FFFFFF;
-            margin-top: 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cta-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .cta-text p {
-            opacity: 0.95;
-        }
-
-        .cta-btn {
-            padding: 1rem 2rem;
-            background: #FFFFFF;
-            color: #FF6600;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Responsive */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .hero {
-                padding: 2rem;
-            }
-
             .hero h1 {
-                font-size: 1.75rem;
+                font-size: 32px;
             }
-
-            .kpi-grid {
+            
+            .metrics-grid,
+            .teams-grid,
+            .top-performers-grid {
                 grid-template-columns: 1fr;
             }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .filters {
+            
+            .header-content {
                 flex-direction: column;
+                gap: 20px;
+            }
+            
+            .stat-row {
+                grid-template-columns: 1fr;
             }
 
-            .filter-btn {
-                width: 100%;
-            }
-
-            .cta-banner {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
+            .container,
+            .top-performers-section {
+                padding: 0 20px;
             }
         }
-    
-        .top-nav-content img {
-            height: 200px;
-            object-fit: contain;
-        }
-</style>
+    </style>
 </head>
 <body>
-    <!-- Top Navigation -->
-    <div class="top-nav">
-        <div class="top-nav-content">
-            <img src="https://assets.cdn.filesafe.space/pqQFCIyCIHvAcbsSGnJ5/media/69e725f23ea93d9dd206430a.png" alt="One Apex" style="height: 200px;">
-            <div class="nav-links">
-                <a href="#dashboard">Dashboard</a>
-                <a href="#teams">Teams</a>
-                <a href="#reports">Reports</a>
+
+<!-- Header Navigation -->
+<div class="header">
+    <div class="header-content">
+        <div class="logo">ONE APEX</div>
+        <nav class="nav">
+            <a href="#" class="active">Dashboard</a>
+            <a href="#">Teams</a>
+            <a href="#">Reports</a>
+        </nav>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>One Apex Branch Dashboard</h1>
+    <p>Real-time performance metrics and team insights | As of 2026-05-21 05:23:31</p>
+</div>
+
+<!-- Tab Navigation -->
+<div class="tabs">
+    <div class="tabs-content">
+        <div class="tab active">Branch Overview</div>
+        <div class="tab">Team Kirk</div>
+        <div class="tab">Team Ivan</div>
+        <div class="tab">Team JP</div>
+        <div class="tab">Team AJ</div>
+        <div class="tab">Team Dianne</div>
+        <div class="tab">Team Renz</div>
+        <div class="tab">Team Sei</div>
+        <div class="tab">Team PDC</div>
+    </div>
+</div>
+
+<!-- Branch Overview -->
+<div class="container">
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-label">MAY MTD</div>
+            <div class="metric-value">₱0.00</div>
+            <div class="metric-subtitle">Month-to-Date</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 20%;"></div>
             </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-label">MAY TARGET (BP 2026)</div>
+            <div class="metric-value">₱5,242,736</div>
+            <div class="metric-subtitle">Monthly Commitment</div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-label">YTD 2026</div>
+            <div class="metric-value">₱0.00</div>
+            <div class="metric-subtitle">Year-to-Date</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 51%;"></div>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-label">YTD TARGET (BP 2026)</div>
+            <div class="metric-value">₱19,005,964</div>
+            <div class="metric-subtitle">Jan-MAY</div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-label">ACTIVE PRODUCERS</div>
+            <div class="metric-value">0</div>
+            <div class="metric-subtitle">May 2026</div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-label">MANPOWER</div>
+            <div class="metric-value">0</div>
+            <div class="metric-subtitle">Active Agents</div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-label">ACTIVITY RATIO</div>
+            <div class="metric-value">0.0%</div>
+            <div class="metric-subtitle">Active / Manpower</div>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <h1>One Apex Branch Dashboard</h1>
-            <p>Real-time performance metrics and team insights | As of <span id="asOfDate"></span></p>
-        </div>
-
-        <!-- Filter Pills -->
-        <div class="filters">
-            <button class="filter-btn active" onclick="showView('branch')">Branch Overview</button>
-            <button class="filter-btn" onclick="showTeam('Kirk')">Team Kirk</button>
-            <button class="filter-btn" onclick="showTeam('Ivan')">Team Ivan</button>
-            <button class="filter-btn" onclick="showTeam('JP')">Team JP</button>
-            <button class="filter-btn" onclick="showTeam('AJ')">Team AJ</button>
-            <button class="filter-btn" onclick="showTeam('Dianne')">Team Dianne</button>
-            <button class="filter-btn" onclick="showTeam('Renz')">Team Renz</button>
-            <button class="filter-btn" onclick="showTeam('Sei')">Team Sei</button>
-            <button class="filter-btn" onclick="showTeam('PDC')">Team PDC</button>
-        </div>
-
-        <!-- Branch Overview -->
-        <div id="branchView" class="dashboard-view active">
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">May MTD</div>
-                    <div class="kpi-value" id="branchMTD">₱0</div>
-                    <div class="kpi-subtitle" id="branchMTDProgress">0% of Target</div>
-                    <div class="kpi-progress">
-                        <div class="kpi-progress-bar" id="branchMTDBar" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">May Target (BP 2026)</div>
-                    <div class="kpi-value" id="branchMayTarget">₱5,242,736</div>
-                    <div class="kpi-subtitle">Monthly Commitment</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">YTD 2026</div>
-                    <div class="kpi-value" id="branchYTD">₱0</div>
-                    <div class="kpi-subtitle" id="branchYTDProgress">0% of BP</div>
-                    <div class="kpi-progress">
-                        <div class="kpi-progress-bar" id="branchYTDBar" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">YTD Target (BP 2026)</div>
-                    <div class="kpi-value" id="branchYTDTarget">₱19,005,964</div>
-                    <div class="kpi-subtitle">Annual Commitment</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">Active Producers</div>
-                    <div class="kpi-value" id="branchActive">0</div>
-                    <div class="kpi-subtitle" id="branchActivityRatio">0% Activity Ratio</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">Manpower</div>
-                    <div class="kpi-value" id="branchManpower">0</div>
-                    <div class="kpi-subtitle">Total Active Agents</div>
-                </div>
+<!-- Team Cards -->
+<div class="container">
+    <div class="teams-grid">
+        
+        <!-- Team Kirk -->
+        <div class="team-card">
+            <div class="team-header">
+                <div class="team-name">Team Kirk</div>
+                <div class="team-badge">Leader</div>
             </div>
-
-            <div class="section-header">
-                <h2 class="section-title">Team Performance</h2>
-                <p class="section-subtitle">Click any team to view detailed producer breakdown</p>
-            </div>
-
-            <div class="team-grid" id="teamsGrid"></div>
-        </div>
-
-        <!-- Team Detail View -->
-        <div id="teamView" class="dashboard-view">
-            <button class="back-btn" onclick="showView('branch')">← Back to Branch Overview</button>
-            
-            <div class="team-detail">
-                <div class="detail-header">
-                    <h2 class="detail-team-name" id="detailTeamName">Team Name</h2>
-                    <p class="detail-subtitle" id="detailTeamFWM">FWM Name</p>
-                </div>
-
-                <div class="kpi-grid">
-                    <div class="kpi-card">
-                        <div class="kpi-label">May MTD</div>
-                        <div class="kpi-value" id="teamMTD">₱0</div>
-                        <div class="kpi-subtitle" id="teamMTDProgress">0% of Target</div>
-                        <div class="kpi-progress">
-                            <div class="kpi-progress-bar" id="teamMTDBar" style="width: 0%"></div>
-                        </div>
+            <div class="team-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">MAY MTD</div>
+                        <div class="stat-value highlight">{{KIRK_MTD}}</div>
                     </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-label">YTD 2026</div>
-                        <div class="kpi-value" id="teamYTD">₱0</div>
-                        <div class="kpi-subtitle" id="teamYTDProgress">0% of BP</div>
-                        <div class="kpi-progress">
-                            <div class="kpi-progress-bar" id="teamYTDBar" style="width: 0%"></div>
-                        </div>
-                    </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-label">Active Producers</div>
-                        <div class="kpi-value" id="teamActive">0</div>
-                        <div class="kpi-subtitle" id="teamActivityRatio">0% Activity Ratio</div>
-                    </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-label">Manpower</div>
-                        <div class="kpi-value" id="teamManpower">0</div>
-                        <div class="kpi-subtitle">Total Active Agents</div>
+                    <div class="stat">
+                        <div class="stat-label">MAY TARGET (BP)</div>
+                        <div class="stat-value">{{KIRK_MONTHLY_TARGET}}</div>
                     </div>
                 </div>
-
-                <div class="producers-section">
-                    <div class="producers-header">
-                        <h3 class="producers-title">Team Producers</h3>
-                        <span class="producer-count" id="producerCount">0 producers</span>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">YTD 2026</div>
+                        <div class="stat-value">{{KIRK_YTD}}</div>
                     </div>
-
-                    <table class="producers-table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Producer</th>
-                                <th>May MTD</th>
-                                <th>YTD 2026</th>
-                                <th>Cases MTD</th>
-                            </tr>
-                        </thead>
-                        <tbody id="producersTableBody">
-                        </tbody>
-                    </table>
+                    <div class="stat">
+                        <div class="stat-label">YTD TARGET (BP)</div>
+                        <div class="stat-value">{{KIRK_YTD_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">ACTIVE / MANPOWER</div>
+                        <div class="stat-value">{{KIRK_ACTIVE}} / {{KIRK_MANPOWER}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">ACTIVITY RATIO</div>
+                        <div class="stat-value">{{KIRK_ACTIVITY}}</div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Team Ivan -->
+        <div class="team-card">
+            <div class="team-header">
+                <div class="team-name">Team Ivan</div>
+                <div class="team-badge">Direct</div>
+            </div>
+            <div class="team-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">MAY MTD</div>
+                        <div class="stat-value highlight">{{IVAN_MTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">MAY TARGET (BP)</div>
+                        <div class="stat-value">{{IVAN_MONTHLY_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">YTD 2026</div>
+                        <div class="stat-value">{{IVAN_YTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">YTD TARGET (BP)</div>
+                        <div class="stat-value">{{IVAN_YTD_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">ACTIVE / MANPOWER</div>
+                        <div class="stat-value">{{IVAN_ACTIVE}} / {{IVAN_MANPOWER}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">ACTIVITY RATIO</div>
+                        <div class="stat-value">{{IVAN_ACTIVITY}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Renz -->
+        <div class="team-card">
+            <div class="team-header">
+                <div class="team-name">Team Renz</div>
+                <div class="team-badge">Growth</div>
+            </div>
+            <div class="team-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">MAY MTD</div>
+                        <div class="stat-value highlight">{{RENZ_MTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">MAY TARGET (BP)</div>
+                        <div class="stat-value">{{RENZ_MONTHLY_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">YTD 2026</div>
+                        <div class="stat-value">{{RENZ_YTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">YTD TARGET (BP)</div>
+                        <div class="stat-value">{{RENZ_YTD_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">ACTIVE / MANPOWER</div>
+                        <div class="stat-value">{{RENZ_ACTIVE}} / {{RENZ_MANPOWER}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">ACTIVITY RATIO</div>
+                        <div class="stat-value">{{RENZ_ACTIVITY}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Dianne -->
+        <div class="team-card">
+            <div class="team-header">
+                <div class="team-name">Team Dianne</div>
+                <div class="team-badge">Rising</div>
+            </div>
+            <div class="team-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">MAY MTD</div>
+                        <div class="stat-value highlight">{{DIANNE_MTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">MAY TARGET (BP)</div>
+                        <div class="stat-value">{{DIANNE_MONTHLY_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">YTD 2026</div>
+                        <div class="stat-value">{{DIANNE_YTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">YTD TARGET (BP)</div>
+                        <div class="stat-value">{{DIANNE_YTD_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">ACTIVE / MANPOWER</div>
+                        <div class="stat-value">{{DIANNE_ACTIVE}} / {{DIANNE_MANPOWER}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">ACTIVITY RATIO</div>
+                        <div class="stat-value">{{DIANNE_ACTIVITY}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Sei -->
+        <div class="team-card">
+            <div class="team-header">
+                <div class="team-name">Team Sei</div>
+                <div class="team-badge">Steady</div>
+            </div>
+            <div class="team-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">MAY MTD</div>
+                        <div class="stat-value highlight">{{SEI_MTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">MAY TARGET (BP)</div>
+                        <div class="stat-value">{{SEI_MONTHLY_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">YTD 2026</div>
+                        <div class="stat-value">{{SEI_YTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">YTD TARGET (BP)</div>
+                        <div class="stat-value">{{SEI_YTD_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">ACTIVE / MANPOWER</div>
+                        <div class="stat-value">{{SEI_ACTIVE}} / {{SEI_MANPOWER}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">ACTIVITY RATIO</div>
+                        <div class="stat-value">{{SEI_ACTIVITY}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team JP -->
+        <div class="team-card">
+            <div class="team-header">
+                <div class="team-name">Team JP</div>
+                <div class="team-badge">Focus</div>
+            </div>
+            <div class="team-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">MAY MTD</div>
+                        <div class="stat-value highlight">{{JP_MTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">MAY TARGET (BP)</div>
+                        <div class="stat-value">{{JP_MONTHLY_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">YTD 2026</div>
+                        <div class="stat-value">{{JP_YTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">YTD TARGET (BP)</div>
+                        <div class="stat-value">{{JP_YTD_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">ACTIVE / MANPOWER</div>
+                        <div class="stat-value">{{JP_ACTIVE}} / {{JP_MANPOWER}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">ACTIVITY RATIO</div>
+                        <div class="stat-value">{{JP_ACTIVITY}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team AJ -->
+        <div class="team-card">
+            <div class="team-header">
+                <div class="team-name">Team AJ</div>
+                <div class="team-badge">Builder</div>
+            </div>
+            <div class="team-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">MAY MTD</div>
+                        <div class="stat-value highlight">{{AJ_MTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">MAY TARGET (BP)</div>
+                        <div class="stat-value">{{AJ_MONTHLY_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">YTD 2026</div>
+                        <div class="stat-value">{{AJ_YTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">YTD TARGET (BP)</div>
+                        <div class="stat-value">{{AJ_YTD_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">ACTIVE / MANPOWER</div>
+                        <div class="stat-value">{{AJ_ACTIVE}} / {{AJ_MANPOWER}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">ACTIVITY RATIO</div>
+                        <div class="stat-value">{{AJ_ACTIVITY}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team PDC -->
+        <div class="team-card">
+            <div class="team-header">
+                <div class="team-name">Team PDC</div>
+                <div class="team-badge">Emerging</div>
+            </div>
+            <div class="team-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">MAY MTD</div>
+                        <div class="stat-value highlight">{{PDC_MTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">MAY TARGET (BP)</div>
+                        <div class="stat-value">{{PDC_MONTHLY_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">YTD 2026</div>
+                        <div class="stat-value">{{PDC_YTD}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">YTD TARGET (BP)</div>
+                        <div class="stat-value">{{PDC_YTD_TARGET}}</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <div class="stat-label">ACTIVE / MANPOWER</div>
+                        <div class="stat-value">{{PDC_ACTIVE}} / {{PDC_MANPOWER}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">ACTIVITY RATIO</div>
+                        <div class="stat-value">{{PDC_ACTIVITY}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Top Performers Section -->
+<div class="top-performers-section">
+    <div class="section-header">
+        <h1 class="section-title">🏆 Top Performers</h1>
+        <p class="section-subtitle">Recognizing excellence across the branch</p>
     </div>
 
-    <script>
-        // Dashboard data (embedded from Python)
-        const dashboardData = {
-  "branch": {
-    "mtd": 1000425.7200000001,
-    "ytd": 9635780.79,
-    "active": 14,
-    "manpower": 138,
-    "cases_mtd": 15.982,
-    "cases_ytd": 150.62789999999998
-  },
-  "teams": [
-    {
-      "name": "Kirk",
-      "mtd": 406269.0,
-      "ytd": 2882374.64,
-      "bp_may": 672000,
-      "bp_ytd": 3224516,
-      "progress": 60.45669642857143,
-      "pacing": 89.38937316484086,
-      "active": 4,
-      "manpower": 30,
-      "producers": [
-        {
-          "name": "Camille Anne Buenaventura Pelayo",
-          "id": "10030707",
-          "mtd": 315456.0,
-          "ytd": 598578.6,
-          "cases_mtd": 2.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Carlo Sierte Punzalan",
-          "id": "10030600",
-          "mtd": 31308.0,
-          "ytd": 467991.29,
-          "cases_mtd": 1.0,
-          "cases_ytd": 6.0
-        },
-        {
-          "name": "Jaime Ente Jimenez",
-          "id": "10033702",
-          "mtd": 30480.0,
-          "ytd": 211825.31999999998,
-          "cases_mtd": 1.0,
-          "cases_ytd": 5.0
-        },
-        {
-          "name": "Jeremy Nikko Radaza Marco",
-          "id": "10036401",
-          "mtd": 29025.0,
-          "ytd": 29025.0,
-          "cases_mtd": 1.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Mikhail Joseph Rada Yu",
-          "id": "10037614",
-          "mtd": 0.0,
-          "ytd": 434324.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Xiaresse Anne Catorce Andaya",
-          "id": "10033631",
-          "mtd": 0.0,
-          "ytd": 298704.70999999996,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "John Kirk Montano Grospe",
-          "id": "10031290",
-          "mtd": 0.0,
-          "ytd": 283836.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Jonathan Ente Jimenez",
-          "id": "10036892",
-          "mtd": 0.0,
-          "ytd": 243016.4,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Margarette Faith Mapalo Cayao",
-          "id": "10035814",
-          "mtd": 0.0,
-          "ytd": 197817.96000000002,
-          "cases_mtd": 0.0,
-          "cases_ytd": 5.0
-        },
-        {
-          "name": "Emil Guingab Bose",
-          "id": "10037222",
-          "mtd": 0.0,
-          "ytd": 117255.35999999999,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Gilbert Estrella Baroy",
-          "id": "10038351",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Paul Luiser Mercado Vasquez",
-          "id": "10038374",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Rogin Paul Ian Garcia Gopez",
-          "id": "10037825",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Krizalieh Balmera Abne",
-          "id": "10037508",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "James Bronson Pascual Addag",
-          "id": "10037462",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Emmanuelle Praise Viscayno Baylon",
-          "id": "10037312",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Jocelyn Tefora Santos",
-          "id": "10037190",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Kim Harvey Chanco Esguerra",
-          "id": "10037060",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Lyka Sapigao Bravo",
-          "id": "10037044",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Luanne Jade Lubiano Robillos",
-          "id": "10036990",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Yvonne Estoquia Mondaya",
-          "id": "10036890",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Michael Vince Millan Cruz",
-          "id": "10036860",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Lyrich Librero Iluis",
-          "id": "10036875",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Leah Hidalgo Reolalas",
-          "id": "10036818",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Alexis Sumague Lamoca",
-          "id": "10036688",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Adrian Buenaventura Subido",
-          "id": "10036450",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Dylene Parina Mampusti",
-          "id": "10036431",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Jomari Louis Retes Alima",
-          "id": "10035788",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Eisen Danielle Filler Fiesta",
-          "id": "10033395",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Maria Katrina Santos Diwa",
-          "id": "10031810",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        }
-      ]
-    },
-    {
-      "name": "Ivan",
-      "mtd": 142672.96000000002,
-      "ytd": 1256733.64,
-      "bp_may": 456000,
-      "bp_ytd": 1618065,
-      "progress": 31.287929824561406,
-      "pacing": 77.66892182946914,
-      "active": 1,
-      "manpower": 17,
-      "producers": [
-        {
-          "name": "Angely Allere Trinidad",
-          "id": "10038392",
-          "mtd": 142672.96000000002,
-          "ytd": 142672.96000000002,
-          "cases_mtd": 1.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Ivan Arnaiz Lontoc",
-          "id": "10033041",
-          "mtd": 0.0,
-          "ytd": 563331.2399999999,
-          "cases_mtd": 0.0,
-          "cases_ytd": 6.0
-        },
-        {
-          "name": "Ma Hazel Rostro Escasio",
-          "id": "10025664",
-          "mtd": 0.0,
-          "ytd": 140630.87999999998,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Maverick Vince Datoon Tayab",
-          "id": "10026358",
-          "mtd": 0.0,
-          "ytd": 113591.76,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.3327999999999998
-        },
-        {
-          "name": "Robert Camansag Lontoc",
-          "id": "10035893",
-          "mtd": 0.0,
-          "ytd": 79824.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Desiree Cyrille Lozano Layag",
-          "id": "10037998",
-          "mtd": 0.0,
-          "ytd": 78360.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Nereous Napoleon Ynitsed Opena Dacanay",
-          "id": "10038024",
-          "mtd": 0.0,
-          "ytd": 61968.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Noel Francis Dicon Paguio",
-          "id": "10035400",
-          "mtd": 0.0,
-          "ytd": 46786.8,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Kimberly Ann Lavilla Abadiez",
-          "id": "10026413",
-          "mtd": 0.0,
-          "ytd": 29568.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Paul Ray-Ann Malinao Chua",
-          "id": "10038491",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Sherry Anne Villania Briones",
-          "id": "10038376",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Kristine Mae Dulay Lontoc",
-          "id": "10037093",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Rodrinisa Demaluan Garcia",
-          "id": "10036657",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Rufino Dumayahen Buyuccan Jr",
-          "id": "10030815",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Marvin Colinares Quilloy",
-          "id": "10034083",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Marinella Baraquiel Torremoro",
-          "id": "10028430",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Ramon Tatlonghari Josue Jr",
-          "id": "10025519",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        }
-      ]
-    },
-    {
-      "name": "JP",
-      "mtd": 226552.08000000002,
-      "ytd": 1337743.76,
-      "bp_may": 828000,
-      "bp_ytd": 3010065,
-      "progress": 27.36136231884058,
-      "pacing": 44.442354567094064,
-      "active": 2,
-      "manpower": 21,
-      "producers": [
-        {
-          "name": "Kimberly Din Mitra",
-          "id": "10023815",
-          "mtd": 205888.08000000002,
-          "ytd": 1181799.3199999998,
-          "cases_mtd": 2.0,
-          "cases_ytd": 15.0
-        },
-        {
-          "name": "Mark Nino Jarito Morales",
-          "id": "10024302",
-          "mtd": 20664.0,
-          "ytd": 93990.36,
-          "cases_mtd": 1.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Marjielou Bago Mardo",
-          "id": "10021072",
-          "mtd": 0.0,
-          "ytd": 60634.079999999994,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Joewelyn Roldan Baas",
-          "id": "10036362",
-          "mtd": 0.0,
-          "ytd": 1320.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.132
-        },
-        {
-          "name": "Ralphson Fernandez Lagonera",
-          "id": "10038604",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Jaezel Villota Palmero",
-          "id": "10038325",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Camille Erica Mariano Reyes",
-          "id": "10038245",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Crislyn Tomamang Dacdac",
-          "id": "10038210",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Mansour Rey Vargas Fernandez",
-          "id": "10038120",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Mansour Ian Vargas Fernandez",
-          "id": "10038115",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Maureen Cosino Escover",
-          "id": "10037993",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Ella May Tapel Perido",
-          "id": "10037470",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Rachel Mondero Larroza",
-          "id": "10036620",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Annabel Nicolas Raygon",
-          "id": "10036635",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Demosthenes Llado Reyes Jr",
-          "id": "10035907",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Ernan Joseph Cuevas Palo",
-          "id": "10035184",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Hannah Thea Ravago",
-          "id": "10030991",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Gdy An Balijo Patricio",
-          "id": "10030243",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Rupert King Figueroa Marcos",
-          "id": "10034099",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Jenny Mae Venales Elmedulan",
-          "id": "10028898",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "John Paul Perido Mitra",
-          "id": "10033002",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        }
-      ]
-    },
-    {
-      "name": "AJ",
-      "mtd": 89988.0,
-      "ytd": 1133288.3399999999,
-      "bp_may": 675000,
-      "bp_ytd": 3115161,
-      "progress": 13.331555555555555,
-      "pacing": 36.37976785148504,
-      "active": 1,
-      "manpower": 18,
-      "producers": [
-        {
-          "name": "Reine Judelle Tumbaga Palcone",
-          "id": "10038408",
-          "mtd": 89988.0,
-          "ytd": 285596.0,
-          "cases_mtd": 1.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Danica Irish Pormatelo Sandagon",
-          "id": "10024319",
-          "mtd": 0.0,
-          "ytd": 479549.16,
-          "cases_mtd": 0.0,
-          "cases_ytd": 12.2115
-        },
-        {
-          "name": "Alyssa Joyce Del Rosario Maningding",
-          "id": "10033013",
-          "mtd": 0.0,
-          "ytd": 154654.9,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "John Reigner Norada Celis",
-          "id": "10023964",
-          "mtd": 0.0,
-          "ytd": 122783.04000000001,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Arcel Bajado Misa",
-          "id": "10037939",
-          "mtd": 0.0,
-          "ytd": 90005.23999999999,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Cynth Cherisse Faderanga Fedelin",
-          "id": "10030469",
-          "mtd": 0.0,
-          "ytd": 700.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Jenina Carunungan Seroy",
-          "id": "10038520",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Antonia Loriall Seidel Grulla",
-          "id": "10038481",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Sonny Austria Sychangco",
-          "id": "10038415",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Fe Casaljay Prado",
-          "id": "10037450",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "James Andrei Faderanga Fedelin",
-          "id": "10036493",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Monic Aira Besa Sena",
-          "id": "10036092",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Abigail Eunice Gudes Domingo",
-          "id": "10036095",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Charmaine Gay Gilamon Perico",
-          "id": "10035987",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Hikaru Mancilla Yoshida",
-          "id": "10035006",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Jeanette Madarang Juangco",
-          "id": "10031123",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Roxanne Bustonera Gelle",
-          "id": "10025021",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Janette Lomongsod Antolin",
-          "id": "10024221",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        }
-      ]
-    },
-    {
-      "name": "Renz",
-      "mtd": 44998.719999999994,
-      "ytd": 675601.6000000001,
-      "bp_may": 614400,
-      "bp_ytd": 2750379,
-      "progress": 7.324010416666665,
-      "pacing": 24.563945550776822,
-      "active": 2,
-      "manpower": 14,
-      "producers": [
-        {
-          "name": "Shawntel Summer Fabila Lalisan",
-          "id": "10025577",
-          "mtd": 33300.0,
-          "ytd": 33300.0,
-          "cases_mtd": 1.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Aime Faeldan Ferrancullo",
-          "id": "10025064",
-          "mtd": 11698.719999999994,
-          "ytd": 239710.08000000002,
-          "cases_mtd": 0.0,
-          "cases_ytd": 4.0
-        },
-        {
-          "name": "Jona Val Tiaga Casidsid",
-          "id": "10034742",
-          "mtd": 0.0,
-          "ytd": 169925.12000000002,
-          "cases_mtd": 0.0,
-          "cases_ytd": 4.0
-        },
-        {
-          "name": "Rennier Giulio Quintua Paligutan",
-          "id": "10026381",
-          "mtd": 0.0,
-          "ytd": 98384.24,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Renelyn Desiree David Ramirez",
-          "id": "10031126",
-          "mtd": 0.0,
-          "ytd": 76587.72,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Mark Vergel Ampong Gregas",
-          "id": "10030898",
-          "mtd": 0.0,
-          "ytd": 57694.44,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Loraine Joy Magsipoc Fabellore",
-          "id": "10038566",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Alfie Gan Fabellore",
-          "id": "10038539",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Clarren Ann Galanga Vicente",
-          "id": "10035953",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Franco Bon Roxas",
-          "id": "10035639",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Ivan Ryan Palenzuela David",
-          "id": "10035336",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Mona Liza Nierva Mendoza",
-          "id": "10024975",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Angel Ann Magallanes Asis",
-          "id": "10025175",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Lailani Nierva Hyde",
-          "id": "10026632",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        }
-      ]
-    },
-    {
-      "name": "Dianne",
-      "mtd": 52612.95999999999,
-      "ytd": 535770.88,
-      "bp_may": 726192,
-      "bp_ytd": 2110339,
-      "progress": 7.245048141538326,
-      "pacing": 25.387905924119302,
-      "active": 2,
-      "manpower": 21,
-      "producers": [
-        {
-          "name": "John Sebastian Peneda Perez",
-          "id": "10038484",
-          "mtd": 42792.95999999999,
-          "ytd": 42792.95999999999,
-          "cases_mtd": 2.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Dianne Mae Tortosion Pestanas",
-          "id": "10032996",
-          "mtd": 9820.0,
-          "ytd": 81960.0,
-          "cases_mtd": 0.982,
-          "cases_ytd": 2.982
-        },
-        {
-          "name": "Diana Rose Salazar Balingit",
-          "id": "10031996",
-          "mtd": 0.0,
-          "ytd": 174300.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Zandralyn Espiritu Kaum",
-          "id": "10032194",
-          "mtd": 0.0,
-          "ytd": 121662.47999999998,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Vivienne Estores Sito",
-          "id": "10022974",
-          "mtd": 0.0,
-          "ytd": 42963.119999999995,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Juan Rosas Fernandez",
-          "id": "10033004",
-          "mtd": 0.0,
-          "ytd": 32604.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Franceus Sirios Ordas",
-          "id": "10020978",
-          "mtd": 0.0,
-          "ytd": 29292.32,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Lizette Escalo Robles",
-          "id": "10033934",
-          "mtd": 0.0,
-          "ytd": 6416.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.6416
-        },
-        {
-          "name": "Felix Duane Rosas Fernandez",
-          "id": "10021107",
-          "mtd": 0.0,
-          "ytd": 3280.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.328
-        },
-        {
-          "name": "Judy Anne Marie Napoles Galindo",
-          "id": "10019416",
-          "mtd": 0.0,
-          "ytd": 500.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Raymart Padilla Valdez",
-          "id": "10037772",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Ace Hiro Olano Dominguiano",
-          "id": "10037425",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Maria Agata Pesino Fernandez",
-          "id": "10037386",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Neil John Arnold Lubugan Dadural",
-          "id": "10037272",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Lean Mari Francis Magalong Capili",
-          "id": "10034751",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Anna Rodriguez Rivera",
-          "id": "10031681",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Rommel Briones Salonga",
-          "id": "10021157",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Rogelia Aldiano Calcena",
-          "id": "10029682",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Ma Cecilia Anne Soriano Batinggal",
-          "id": "10023981",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Zosimo Hernandez Ruyeras Jr",
-          "id": "10024277",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Girlie Anne Gabutero Rada",
-          "id": "10023872",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        }
-      ]
-    },
-    {
-      "name": "Sei",
-      "mtd": 37332.0,
-      "ytd": 1600098.93,
-      "bp_may": 686144,
-      "bp_ytd": 2216633,
-      "progress": 5.440840406678482,
-      "pacing": 72.18601049429473,
-      "active": 2,
-      "manpower": 13,
-      "producers": [
-        {
-          "name": "Myuka Andrea Yu Narca",
-          "id": "10038595",
-          "mtd": 19332.0,
-          "ytd": 19332.0,
-          "cases_mtd": 1.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Beverly Anne Dilao Dela Cruz",
-          "id": "10028353",
-          "mtd": 18000.0,
-          "ytd": 18500.0,
-          "cases_mtd": 1.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Claudine Wowie Hao Chua",
-          "id": "10037647",
-          "mtd": 0.0,
-          "ytd": 573667.22,
-          "cases_mtd": 0.0,
-          "cases_ytd": 6.0
-        },
-        {
-          "name": "Jhesicu Mendana Beleno",
-          "id": "10030674",
-          "mtd": 0.0,
-          "ytd": 221937.19999999998,
-          "cases_mtd": 0.0,
-          "cases_ytd": 3.0
-        },
-        {
-          "name": "Lilibeth Almarez Perez",
-          "id": "10030601",
-          "mtd": 0.0,
-          "ytd": 211778.78,
-          "cases_mtd": 0.0,
-          "cases_ytd": 4.0
-        },
-        {
-          "name": "Jeanille Trixia Go Leyva",
-          "id": "10038253",
-          "mtd": 0.0,
-          "ytd": 203250.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Sherwin Banag Ico",
-          "id": "10019222",
-          "mtd": 0.0,
-          "ytd": 174296.61,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "J R Seimone Montano Grospe",
-          "id": "10033010",
-          "mtd": 0.0,
-          "ytd": 61912.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Monica Louise De Leon Alberto",
-          "id": "10033022",
-          "mtd": 0.0,
-          "ytd": 61143.119999999995,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Piolo De Grano Capuno",
-          "id": "10026386",
-          "mtd": 0.0,
-          "ytd": 54282.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Ricajoyce Toledo Silva",
-          "id": "10038125",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Charmaine Dando Beleno",
-          "id": "10037397",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Stephanie Grace Rioflorido Maya",
-          "id": "10031728",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        }
-      ]
-    },
-    {
-      "name": "PDC",
-      "mtd": 0.0,
-      "ytd": 214169.0,
-      "bp_may": 585000,
-      "bp_ytd": 960806,
-      "progress": 0.0,
-      "pacing": 22.290556053979678,
-      "active": 0,
-      "manpower": 4,
-      "producers": [
-        {
-          "name": "Princess Diane De Guzman Cheng",
-          "id": "10033009",
-          "mtd": 0.0,
-          "ytd": 139445.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 2.0
-        },
-        {
-          "name": "Sherica Pelin Picana",
-          "id": "10036080",
-          "mtd": 0.0,
-          "ytd": 74724.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 1.0
-        },
-        {
-          "name": "Christine Jane Nuda Varon",
-          "id": "10034275",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        },
-        {
-          "name": "Diana Lubao Malacad",
-          "id": "10029524",
-          "mtd": 0.0,
-          "ytd": 0.0,
-          "cases_mtd": 0.0,
-          "cases_ytd": 0.0
-        }
-      ]
-    }
-  ],
-  "bp_branch_may": 5242736,
-  "bp_branch_ytd": 19005964,
-  "as_of_date": "May 19, 2026"
-};
+    <div class="top-performers-grid">
+        
+        <!-- Top 10 MTD -->
+        <div class="performer-card">
+            <div class="performer-card-header">
+                📊 Top 10 Producers (MTD)
+            </div>
+            <table class="performer-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Producer</th>
+                        <th>Team</th>
+                        <th>MTD APE</th>
+                        <th>Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan='5' style='text-align:center;padding:20px;color:#999;'>No data available</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-        // FWM names
-        const fwmNames = {
-            'Kirk': 'John Kirk Montano Grospe',
-            'JP': 'John Paul Perido Mitra',
-            'Ivan': 'Ivan Arnaiz Lontoc',
-            'AJ': 'Alyssa Joyce Del Rosario Maningding',
-            'Dianne': 'Dianne Mae Tortosion Pestanas',
-            'Renz': 'Renelyn Desiree David Ramirez',
-            'Sei': 'J R Seimone Montano Grospe',
-            'PDC': 'Princess Diane De Guzman Cheng'
-        };
+        <!-- Top 20 YTD -->
+        <div class="performer-card">
+            <div class="performer-card-header">
+                🎯 Top 20 Producers (YTD)
+            </div>
+            <table class="performer-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Producer</th>
+                        <th>Team</th>
+                        <th>YTD APE</th>
+                        <th>Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan='5' style='text-align:center;padding:20px;color:#999;'>No data available</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-        // Format currency
-        function formatPeso(amount) {
-            return '₱' + amount.toLocaleString('en-PH', {maximumFractionDigits: 0});
-        }
+        <!-- Top 10 Rookies MTD -->
+        <div class="performer-card">
+            <div class="performer-card-header rookies">
+                ⭐ Top 10 Rookies (MTD)
+            </div>
+            <table class="performer-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rookie</th>
+                        <th>Team</th>
+                        <th>MTD APE</th>
+                        <th>Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan='5' style='text-align:center;padding:20px;color:#999;'>No data available</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-        // Format percentage
-        function formatPercent(value) {
-            return value.toFixed(1) + '%';
-        }
+        <!-- Top 20 Rookies YTD -->
+        <div class="performer-card">
+            <div class="performer-card-header rookies">
+                🌟 Top 20 Rookies (YTD)
+            </div>
+            <table class="performer-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rookie</th>
+                        <th>Team</th>
+                        <th>YTD APE</th>
+                        <th>Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan='5' style='text-align:center;padding:20px;color:#999;'>No data available</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-        // Initialize dashboard
-        function initDashboard() {
-            document.getElementById('asOfDate').textContent = dashboardData.as_of_date;
-            loadBranchView();
-            loadTeamsGrid();
-        }
+        <!-- Top Recruiters MTD -->
+        <div class="performer-card">
+            <div class="performer-card-header recruiters">
+                🎖️ Top Recruiters (MTD)
+            </div>
+            <table class="performer-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Recruiter</th>
+                        <th>Team</th>
+                        <th>Recruits' APE</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan='5' style='text-align:center;padding:20px;color:#999;'>No data available</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-        // Load branch overview
-        function loadBranchView() {
-            const branch = dashboardData.branch;
-            const bpMay = dashboardData.bp_branch_may;
-            const bpYTD = dashboardData.bp_branch_ytd;
+        <!-- Top Recruiters YTD -->
+        <div class="performer-card">
+            <div class="performer-card-header recruiters">
+                🏅 Top Recruiters (YTD)
+            </div>
+            <table class="performer-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Recruiter</th>
+                        <th>Team</th>
+                        <th>Recruits' APE</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan='5' style='text-align:center;padding:20px;color:#999;'>No data available</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-            document.getElementById('branchMTD').textContent = formatPeso(branch.mtd);
-            document.getElementById('branchMayTarget').textContent = formatPeso(bpMay);
-            document.getElementById('branchYTD').textContent = formatPeso(branch.ytd);
-            document.getElementById('branchYTDTarget').textContent = formatPeso(bpYTD);
-            document.getElementById('branchActive').textContent = branch.active;
-            document.getElementById('branchManpower').textContent = branch.manpower;
+    </div>
+</div>
 
-            const mtdProgress = (branch.mtd / bpMay * 100);
-            const ytdProgress = (branch.ytd / bpYTD * 100);
-            const activityRatio = (branch.active / branch.manpower * 100);
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2026 One Apex Branch | FWBM: Ivan Arnaiz Lontoc</p>
+    <p class="footer-small">Last updated: 2026-05-21 05:23:31</p>
+</div>
 
-            document.getElementById('branchMTDProgress').textContent = formatPercent(mtdProgress) + ' of Target';
-            document.getElementById('branchYTDProgress').textContent = formatPercent(ytdProgress) + ' of BP';
-            document.getElementById('branchActivityRatio').textContent = formatPercent(activityRatio) + ' Activity Ratio';
-
-            document.getElementById('branchMTDBar').style.width = Math.min(mtdProgress, 100) + '%';
-            document.getElementById('branchYTDBar').style.width = Math.min(ytdProgress, 100) + '%';
-        }
-
-        // Load teams grid
-        function loadTeamsGrid() {
-            const grid = document.getElementById('teamsGrid');
-            grid.innerHTML = '';
-
-            dashboardData.teams.forEach(team => {
-                const card = document.createElement('div');
-                card.className = 'team-card';
-                card.onclick = () => showTeam(team.name);
-
-                const activityRatio = team.manpower > 0 ? (team.active / team.manpower * 100) : 0;
-
-                card.innerHTML = `
-                    <div class="team-header">
-                        <div class="team-name">Team ${team.name}</div>
-                        <div class="team-badge">${formatPercent(team.progress)}</div>
-                    </div>
-                    <div class="team-stats">
-                        <div class="stat-item">
-                            <div class="stat-label">May MTD</div>
-                            <div class="stat-value">${formatPeso(team.mtd)}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">May Target (BP)</div>
-                            <div class="stat-value">${formatPeso(team.bp_may)}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">YTD 2026</div>
-                            <div class="stat-value">${formatPeso(team.ytd)}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">YTD Target (BP)</div>
-                            <div class="stat-value">${formatPeso(team.bp_ytd)}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Active / Manpower</div>
-                            <div class="stat-value">${team.active} / ${team.manpower}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Activity Ratio</div>
-                            <div class="stat-value">${formatPercent(activityRatio)}</div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <span style="font-size: 0.875rem; color: #666;">May Progress</span>
-                            <span style="font-size: 0.875rem; font-weight: 700; color: #FF6600;">${formatPercent(team.progress)}</span>
-                        </div>
-                        <div class="kpi-progress">
-                            <div class="kpi-progress-bar" style="width: ${Math.min(team.progress, 100)}%"></div>
-                        </div>
-                    </div>
-                `;
-
-                grid.appendChild(card);
-            });
-        }
-
-        // Show view
-        function showView(viewName) {
-            document.querySelectorAll('.dashboard-view').forEach(view => {
-                view.classList.remove('active');
-            });
-
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            if (viewName === 'branch') {
-                document.getElementById('branchView').classList.add('active');
-                document.querySelector('.filter-btn').classList.add('active');
-            } else {
-                document.getElementById('teamView').classList.add('active');
-            }
-        }
-
-        // Show team detail
-        function showTeam(teamName) {
-            const team = dashboardData.teams.find(t => t.name === teamName);
-            if (!team) return;
-
-            // Update filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.includes(teamName)) {
-                    btn.classList.add('active');
-                }
-            });
-
-            // Load team detail
-            document.getElementById('detailTeamName').textContent = `Team ${team.name}`;
-            document.getElementById('detailTeamFWM').textContent = fwmNames[team.name];
-
-            document.getElementById('teamMTD').textContent = formatPeso(team.mtd);
-            document.getElementById('teamYTD').textContent = formatPeso(team.ytd);
-            document.getElementById('teamActive').textContent = team.active;
-            document.getElementById('teamManpower').textContent = team.manpower;
-
-            const activityRatio = team.manpower > 0 ? (team.active / team.manpower * 100) : 0;
-
-            document.getElementById('teamMTDProgress').textContent = formatPercent(team.progress) + ' of Target';
-            document.getElementById('teamYTDProgress').textContent = formatPercent(team.pacing) + ' of BP';
-            document.getElementById('teamActivityRatio').textContent = formatPercent(activityRatio) + ' Activity Ratio';
-
-            document.getElementById('teamMTDBar').style.width = Math.min(team.progress, 100) + '%';
-            document.getElementById('teamYTDBar').style.width = Math.min(team.pacing, 100) + '%';
-
-            // Load producers table
-            const tbody = document.getElementById('producersTableBody');
-            tbody.innerHTML = '';
-
-            document.getElementById('producerCount').textContent = team.producers.length + ' producers';
-
-            team.producers.forEach((producer, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td class="producer-name">${producer.name}</td>
-                    <td class="amount">${formatPeso(producer.mtd)}</td>
-                    <td class="amount">${formatPeso(producer.ytd)}</td>
-                    <td>${producer.cases_mtd.toFixed(1)}</td>
-                `;
-                tbody.appendChild(row);
-            });
-
-            showView('team');
-        }
-
-        // Initialize on load
-        initDashboard();
-    </script>
 </body>
 </html>
