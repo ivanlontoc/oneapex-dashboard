@@ -1,8 +1,8 @@
 {
   "branch": {
-    "mtd": 1000425.7200000001,
-    "ytd": 9635780.79,
-    "active": 14
+    "mtd": 1244280.48,
+    "ytd": 9879635.55,
+    "active": 15
   },
   "teams": {
     "AJ": {
@@ -14,8 +14,8 @@
       "YTD": 535771.0
     },
     "Ivan": {
-      "MAY_MTD": 142673.0,
-      "YTD": 1256734.0
+      "MAY_MTD": 386528.0,
+      "YTD": 1500588.0
     },
     "JP": {
       "MAY_MTD": 226552.0,
@@ -43,6 +43,11 @@
       "AGENT_NAME": "Camille Anne Buenaventura Pelayo",
       "TEAM": "Kirk",
       "MAY_MTD": 315456.0
+    },
+    {
+      "AGENT_NAME": "Paul Ray-Ann Malinao Chua",
+      "TEAM": "Ivan",
+      "MAY_MTD": 243854.75999999998
     },
     {
       "AGENT_NAME": "Kimberly Din Mitra",
@@ -83,11 +88,6 @@
       "AGENT_NAME": "Jeremy Nikko Radaza Marco",
       "TEAM": "Kirk",
       "MAY_MTD": 29025.0
-    },
-    {
-      "AGENT_NAME": "Mark Nino Jarito Morales",
-      "TEAM": "JP",
-      "MAY_MTD": 20664.0
     }
   ],
   "top_ytd": [
@@ -142,6 +142,11 @@
       "YTD": 283836.0
     },
     {
+      "AGENT_NAME": "Paul Ray-Ann Malinao Chua",
+      "TEAM": "Ivan",
+      "YTD": 243854.75999999998
+    },
+    {
       "AGENT_NAME": "Jonathan Ente Jimenez",
       "TEAM": "Kirk",
       "YTD": 243016.4
@@ -185,11 +190,6 @@
       "AGENT_NAME": "Sherwin Banag Ico",
       "TEAM": "Sei",
       "YTD": 174296.61
-    },
-    {
-      "AGENT_NAME": "Jona Val Tiaga Casidsid",
-      "TEAM": "Renz",
-      "YTD": 169925.12000000002
     }
   ]
 }
